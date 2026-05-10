@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react'
+import { MapContainer, TileLayer, CircleMarker, Popup } from 'react-leaflet'
 import { sampleMLAs, assamDistricts, issueCategories } from './data/mlaData'
+import { districtCoordinates, assamCenter } from './data/districtCoords'
+import 'leaflet/dist/leaflet.css'
 
 function App() {
   const [activeTab, setActiveTab] = useState('problems')
@@ -200,6 +203,7 @@ function App() {
           </a>
           <nav className="nav-links">
             <a className={`nav-link ${activeTab === 'problems' ? 'active' : ''}`} onClick={() => setActiveTab('problems')}>📍 Problems</a>
+            <a className={`nav-link ${activeTab === 'map' ? 'active' : ''}`} onClick={() => setActiveTab('map')}>🗺️ Map</a>
             <a className={`nav-link ${activeTab === 'solved' ? 'active' : ''}`} onClick={() => setActiveTab('solved')}>✅ Solved</a>
             <a className={`nav-link ${activeTab === 'mla' ? 'active' : ''}`} onClick={() => setActiveTab('mla')}>🏛️ MLA</a>
             {currentMLA && <a className={`nav-link ${activeTab === 'mla-portal' ? 'active' : ''}`} onClick={() => setActiveTab('mla-portal')}>👤 MLA Portal</a>}
@@ -319,6 +323,88 @@ function App() {
                 })}
               </div>
             )}
+          </>
+        )}
+
+        {activeTab === 'map' && (
+          <>
+            <div className="map-legend">
+              <span className="legend-item"><span className="dot red"></span> 100+ Problems (High)</span>
+              <span className="legend-item"><span className="dot orange"></span> 50-99 Problems (Medium)</span>
+              <span className="legend-item"><span className="dot green"></span> 1-49 Problems (Low)</span>
+            </div>
+            <div className="map-container">
+              <MapContainer 
+                center={[assamCenter.lat, assamCenter.lng]} 
+                zoom={7} 
+                style={{ height: '500px', width: '100%', borderRadius: '16px' }}
+              >
+                <TileLayer
+                  attribution='&copy; OpenStreetMap contributors'
+                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
+                {assamDistricts.map(district => {
+                  const coords = districtCoordinates[district]
+                  if (!coords) return null
+                  const districtProblems = problems.filter(p => p.district === district)
+                  const count = districtProblems.length
+                  let color = '#22c55e' // green - low
+                  let radius = 20
+                  if (count > 100) {
+                    color = '#ef4444' // red - high
+                    radius = 45
+                  } else if (count >= 50) {
+                    color = '#f97316' // orange - medium
+                    radius = 35
+                  } else if (count > 0) {
+                    color = '#22c55e' // green - low
+                    radius = 20 + count * 0.3
+                  } else {
+                    return null
+                  }
+                  return (
+                    <CircleMarker
+                      key={district}
+                      center={[coords.lat, coords.lng]}
+                      radius={radius}
+                      pathOptions={{ 
+                        color: color, 
+                        fillColor: color, 
+                        fillOpacity: 0.7,
+                        weight: 2
+                      }}
+                    >
+                      <Popup>
+                        <div className="map-popup">
+                          <h3>{district}</h3>
+                          <p><strong>Total Problems:</strong> {count}</p>
+                          <p>Pending: {districtProblems.filter(p => p.status === 'pending').length}</p>
+                          <p>In Progress: {districtProblems.filter(p => p.status === 'in_progress').length}</p>
+                          <p>Solved: {districtProblems.filter(p => p.status === 'resolved').length}</p>
+                        </div>
+                      </Popup>
+                    </CircleMarker>
+                  )
+                })}
+              </MapContainer>
+            </div>
+            <div className="map-stats">
+              {assamDistricts.map(district => {
+                const count = problems.filter(p => p.district === district).length
+                if (count === 0) return null
+                const coords = districtCoordinates[district]
+                return (
+                  <div 
+                    key={district} 
+                    className={`district-stat ${count > 100 ? 'red' : count >= 50 ? 'orange' : 'green'}`}
+                    onClick={() => { setFilterDistrict(district); setActiveTab('problems') }}
+                  >
+                    <span className="district-name">{district}</span>
+                    <span className="district-count">{count}</span>
+                  </div>
+                )
+              })}
+            </div>
           </>
         )}
 

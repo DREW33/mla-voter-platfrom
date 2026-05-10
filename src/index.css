@@ -1358,3 +1358,140 @@ h3 {
     font-size: 0.85rem;
   }
 }
+
+/* Map Styles */
+.map-legend {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot.red { background: #ef4444; }
+.dot.orange { background: #f97316; }
+.dot.green { background: #22c55e; }
+
+.map-container {
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.leaflet-container {
+  background: var(--surface) !important;
+}
+
+.map-popup {
+  padding: 0.25rem;
+}
+
+.map-popup h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.map-popup p {
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+  color: var(--text-secondary);
+}
+
+.map-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.district-stat {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  border: 1px solid var(--border);
+}
+
+.district-stat:hover {
+  transform: scale(1.02);
+}
+
+.district-stat.red {
+  border-left: 4px solid #ef4444;
+}
+
+.district-stat.orange {
+  border-left: 4px solid #f97316;
+}
+
+.district-stat.green {
+  border-left: 4px solid #22c55e;
+}
+
+.district-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.district-count {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.district-stat.red .district-count { color: #ef4444; }
+.district-stat.orange .district-count { color: #f97316; }
+.district-stat.green .district-count { color: #22c55e; }
+
+/* Mobile map */
+@media (max-width: 768px) {
+  .map-legend {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .map-container {
+    border-radius: 12px;
+  }
+
+  .map-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+
+  .district-stat {
+    padding: 0.6rem 0.75rem;
+  }
+
+  .district-name {
+    font-size: 0.75rem;
+  }
+
+  .district-count {
+    font-size: 0.9rem;
+  }
+}
