@@ -964,3 +964,397 @@ h3 {
   border-radius: 8px;
   border: 2px solid var(--accent);
 }
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+  }
+
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+
+  .nav-links {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.6rem;
+  }
+
+  .hero {
+    padding: 2rem 0.75rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .search-box {
+    flex-direction: column;
+    border-radius: 10px;
+  }
+
+  .search-box input {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .search-box button {
+    padding: 0.85rem 1rem;
+    font-size: 0.9rem;
+    width: 100%;
+  }
+
+  .search-filters {
+    gap: 0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .search-filters select {
+    flex: 1;
+    min-width: 100px;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .tabs {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.4rem;
+    margin: 1rem 0.5rem;
+  }
+
+  .tab {
+    padding: 0.6rem 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .main-content {
+    padding: 1rem 0.5rem;
+  }
+
+  .stats-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+    text-align: center;
+  }
+
+  .problems-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .problem-card {
+    border-radius: 12px;
+  }
+
+  .problem-image-container {
+    height: 180px;
+  }
+
+  .problem-content {
+    padding: 1rem;
+  }
+
+  .problem-meta {
+    gap: 0.4rem;
+  }
+
+  .issue-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .problem-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.85rem;
+  }
+
+  .btn-sm {
+    width: 100%;
+    margin-bottom: 0.4rem;
+  }
+
+  .solved-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .before-after-comparison {
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 0.75rem;
+  }
+
+  .comparison-image {
+    height: 120px;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+  }
+
+  .mla-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .mla-card {
+    padding: 1rem;
+  }
+
+  .mla-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .mla-avatar {
+    width: 60px;
+    height: 60px;
+    font-size: 1.25rem;
+  }
+
+  .mla-card-actions {
+    flex-direction: column;
+  }
+
+  .mla-stats {
+    justify-content: center;
+  }
+
+  .mla-search-input {
+    padding: 0.85rem;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    padding: 1.25rem;
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+    border-radius: 12px;
+  }
+
+  .modal h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .rating-input {
+    gap: 0.3rem;
+  }
+
+  .rating-input .star {
+    font-size: 1.5rem;
+  }
+
+  .photo-upload {
+    padding: 1.25rem;
+  }
+
+  .photo-preview {
+    max-height: 150px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-actions .btn {
+    width: 100%;
+  }
+
+  .portal-stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .toast {
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: 1rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    padding: 1.5rem 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .mla-welcome h1 {
+    font-size: 1.5rem;
+  }
+
+  .portal-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .portal-header h2 {
+    font-size: 1.4rem;
+  }
+
+  .your-problem-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .status-badge {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .stars {
+    gap: 0.15rem;
+  }
+
+  .star {
+    font-size: 1rem;
+  }
+
+  .rating-count {
+    font-size: 0.75rem;
+  }
+
+  .solved-content {
+    padding: 1rem;
+  }
+
+  .solved-date {
+    font-size: 0.8rem;
+  }
+
+  .completion-proof {
+    display: flex;
+    justify-content: center;
+  }
+
+  .completion-thumb {
+    width: 60px;
+    height: 60px;
+  }
+
+  .problem-rating {
+    justify-content: center;
+  }
+
+  .empty-state {
+    padding: 2rem 1rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1.1rem;
+  }
+
+  .empty-state p {
+    font-size: 0.85rem;
+  }
+
+  .app-container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 380px) {
+  .search-filters {
+    flex-direction: column;
+  }
+
+  .search-filters select {
+    width: 100%;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portal-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) {
+  .btn:active {
+    transform: scale(0.98);
+  }
+
+  .nav-link:active {
+    opacity: 0.8;
+  }
+
+  .tab:active {
+    transform: scale(0.98);
+  }
+
+  input[type="file"] {
+    font-size: 0.85rem;
+  }
+}
